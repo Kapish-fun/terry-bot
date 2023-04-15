@@ -1,0 +1,22 @@
+{
+	"name": "discord-bot-template",
+	"main": "src/index.js",
+	"engines": {
+		"node": "18.x"
+	},
+	"scripts": {
+		"start": "node .",
+		"dev": "nodemon --exec \"clear; npm run start\""
+	},
+	"dependencies": {
+		"@llama-node/core": "^0.0.23",
+		"eris": "^0.17.1",
+		"fluent-ffmpeg": "^2.1.2",
+		"llama-node": "^0.0.23",
+		"mongodb": "^4.6.0",
+		"node-fetch": "^2.6.8"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.16"
+	}
+}

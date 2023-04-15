@@ -1,0 +1,4 @@
+node_modules
+nodemon.json
+_*.*
+ggml-alpaca-7b-q4.bin
