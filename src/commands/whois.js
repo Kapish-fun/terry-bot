@@ -3,7 +3,7 @@ const fetch = require("node-fetch")
 exports.info = {
 	name: "whois",
 	description: "Lookup a Crapblox user by their username",
-	disabled: true,
+	disabled: false,
 	options: [{ name: "username", description: "The user's username.", type: 3, required: true }],
 }
 
