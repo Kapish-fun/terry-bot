@@ -1,7 +1,7 @@
-//const { LLama } = require("llama-node")
-//const { LLamaRS } = require("llama-node/dist/llm/llama-rs.cjs")
-//const llama = new LLama(LLamaRS)
-//const path = require("path")
+const { LLama } = require("llama-node")
+const { LLamaRS } = require("llama-node/dist/llm/llama-rs.cjs")
+const llama = new LLama(LLamaRS)
+const path = require("path")
 const fs = require("fs")
 const Eris = require("eris")
 const client = new Eris(process.env.TOKEN, {
@@ -15,7 +15,7 @@ const embed = require("./modules/embed")
 client.admins = []
 client.commands = new Map()
 client.embed = embed.bind(null, client)
-//client.llama = llama
+client.llama = llama
 
 for (let file of fs.readdirSync(`${__dirname}/commands`)) {
 	if (!file.endsWith(".js")) continue
@@ -27,7 +27,7 @@ for (let file of fs.readdirSync(`${__dirname}/events`)) {
 	client.on(file.split(".")[0], require(`${__dirname}/events/${file}`).bind(null, client))
 }
 
-//llama.load({ path: path.resolve(process.cwd(), "./ggml-alpaca-7b-q4.bin") })
+llama.load({ path: path.resolve(process.cwd(), "./ggml-alpaca-7b-q4.bin") })
 client.connect()
 
 client.once("ready", async () => {
