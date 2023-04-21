@@ -1,4 +1,8 @@
+const { LLama } = require("llama-node")
+const { LLamaRS } = require("llama-node/dist/llm/llama-rs.cjs")
 const util = require("util")
+const path = require("path")
+
 const template = "Complete the instruction below.\n\n### Instruction:\n\n%s\n\n### Response:"
 
 exports.info = {
@@ -14,10 +18,13 @@ exports.run = async (client, interaction) => {
 
 	await interaction.defer()
 
+	const llama = new LLama(LLamaRS)
+	llama.load({ path: path.resolve(process.cwd(), "./ggml-alpaca-7b-q4.bin") })
+
 	let output = ""
 	let last_edit = 0
 
-	client.llama.createCompletion(
+	llama.createCompletion(
 		{
 			prompt: util.format(template, prompt),
 			numPredict: 512,
