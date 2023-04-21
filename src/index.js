@@ -27,7 +27,7 @@ for (let file of fs.readdirSync(`${__dirname}/events`)) {
 	client.on(file.split(".")[0], require(`${__dirname}/events/${file}`).bind(null, client))
 }
 
-llama.load({ path: path.resolve(process.cwd(), "./ggml-alpaca-7b-q4.bin") })
+//llama.load({ path: path.resolve(process.cwd(), "./ggml-alpaca-7b-q4.bin") })
 client.connect()
 
 client.once("ready", async () => {
