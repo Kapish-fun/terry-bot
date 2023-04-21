@@ -20,13 +20,13 @@ exports.run = async (client, interaction) => {
 	client.llama.createCompletion(
 		{
 			prompt: util.format(template, prompt),
-			numPredict: 128,
+			numPredict: 512,
 			temp: 0.2,
 			topP: 1,
 			topK: 40,
 			repeatPenalty: 1,
 			repeatLastN: 64,
-			seed: 0,
+			seed: Math.random() * 1_000_000_000,
 			feedPrompt: true,
 		},
 		(response) => {
