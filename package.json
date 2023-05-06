@@ -1,5 +1,5 @@
 {
-	"name": "discord-bot-template",
+	"name": "terry-bot",
 	"main": "src/index.js",
 	"engines": {
 		"node": "18.x"
@@ -11,10 +11,7 @@
 	"dependencies": {
 		"@llama-node/core": "^0.0.23",
 		"eris": "^0.17.1",
-		"fluent-ffmpeg": "^2.1.2",
-		"llama-node": "^0.0.23",
-		"mongodb": "^4.6.0",
-		"node-fetch": "^2.6.8"
+		"llama-node": "^0.0.23"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.16"

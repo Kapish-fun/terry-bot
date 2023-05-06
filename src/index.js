@@ -4,11 +4,7 @@ const llama = new LLama(LLamaRS)
 const path = require("path")
 const fs = require("fs")
 const Eris = require("eris")
-const client = new Eris(process.env.TOKEN, {
-	restMode: true,
-	defaultImageFormat: "png",
-	defaultImageSize: 256,
-})
+const client = new Eris(process.env.TOKEN, { restMode: true, defaultImageFormat: "png", defaultImageSize: 256 })
 
 const embed = require("./modules/embed")
 
