@@ -6,12 +6,11 @@
 	},
 	"scripts": {
 		"start": "node .",
-		"dev": "nodemon --exec \"clear; npm run start\""
+		"build": "docker build . -t cirroskais/terry-bot"
 	},
 	"dependencies": {
-		"@llama-node/core": "^0.0.23",
 		"eris": "^0.17.1",
-		"llama-node": "^0.0.23"
+		"soap": "^1.0.0"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.16"

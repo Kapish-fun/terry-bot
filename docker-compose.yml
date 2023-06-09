@@ -1,0 +1,5 @@
+services:
+    terry:
+        image: "cirroskais/terry-bot"
+        env_file:
+            - .env

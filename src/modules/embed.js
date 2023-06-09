@@ -7,7 +7,7 @@ module.exports = (client, author, data) => {
 		color: data.color ? parseInt("0x" + data.color.replace("#", "")) : undefined,
 		footer: {
 			icon_url: data.footerUrl || `https://cdn.discordapp.com/avatars/${author.user.id}/${author.user.avatar}.webp`,
-			text: data.footerText || `${author.user.username}#${author.user.discriminator}`,
+			text: data.footerText,
 		},
 		description: data.description || "",
 		fields: data.fields || [],
