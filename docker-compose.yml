@@ -2,5 +2,3 @@ services:
     terry:
         restart: "always"
         image: "cirroskais/terry-bot"
-        env_file:
-            - .env
