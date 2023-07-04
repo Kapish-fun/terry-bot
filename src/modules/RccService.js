@@ -1,4 +1,4 @@
-const soap = require("soap")
+const soap = require("strong-soap").soap
 const crypto = require("crypto")
 
 class RccService {
@@ -26,7 +26,28 @@ class RccService {
 				category: 0,
 				cores: 1,
 			},
-			script,
+			script: {
+				name: jobid,
+				script,
+				arguments: {},
+			},
+		})
+	}
+
+	async OpenJob(jobid, script, expirationInSeconds = 60) {
+		if (!this.client) throw new Error("There is no client")
+		return await this.client.OpenJobAsync({
+			job: {
+				id: jobid,
+				expirationInSeconds,
+				category: 0,
+				cores: 1,
+			},
+			script: {
+				name: jobid,
+				script,
+				arguments: {},
+			},
 		})
 	}
 

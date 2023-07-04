@@ -1,5 +1,7 @@
 module.exports = (client, interaction) => {
 	const { id, token, data, channel, member } = interaction
+	if (channel.id == "1125550056666304582") return
+
 	const command = client.commands.get(data.name)
 
 	if (!command)

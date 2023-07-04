@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"eris": "^0.17.1",
-		"soap": "^1.0.0"
+		"strong-soap": "^3.5.2"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.16"

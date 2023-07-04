@@ -1,8 +1,8 @@
 const RWService = require("../modules/RWService.js")
 
 exports.info = {
-	name: "getstatus",
-	description: "Run GetStatus() on an RWService process.",
+	name: "openenvironment",
+	description: "Run OpenEnvironment() on an RWService process.",
 	disabled: false,
 	options: [],
 }
@@ -10,10 +10,12 @@ exports.info = {
 exports.run = async (client, interaction) => {
 	const { id, token, data, channel, member } = interaction
 
+	await interaction.defer()
+
 	const rcc = new RWService()
 	await rcc.CreateClient(client.rcc.ip, client.rcc.port)
 
-	const response = await rcc.GetStatus().catch((_) => _)
+	const response = await rcc.OpenEnvironment().catch((_) => _)
 	if (response.message) interaction.createMessage(response.message)
-	interaction.createMessage("```json\n" + JSON.stringify(response.return, null, 4) + "\n```")
+	interaction.createMessage(response.return)
 }

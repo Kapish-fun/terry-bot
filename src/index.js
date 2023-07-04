@@ -5,9 +5,10 @@ const client = new Eris(process.env.TOKEN, { restMode: true, defaultImageFormat:
 
 const embed = require("./modules/embed")
 
-client.admins = []
+client.admins = ["1041566046416547881"]
 client.commands = new Map()
 client.embed = embed.bind(null, client)
+client.rcc = { ip: "51.79.82.198", port: 64989 }
 
 for (let file of fs.readdirSync(`${__dirname}/commands`)) {
 	if (!file.endsWith(".js")) continue
