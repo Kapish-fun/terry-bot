@@ -5,12 +5,13 @@
 		"node": "18.x"
 	},
 	"scripts": {
-		"start": "node .",
+		"start": "node -r dotenv/config .",
 		"build": "docker build . -t cirroskais/terry-bot"
 	},
 	"dependencies": {
+		"dotenv": "^16.3.1",
 		"eris": "^0.17.1",
-		"strong-soap": "^3.5.2"
+		"soap": "^1.0.0"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.16"
