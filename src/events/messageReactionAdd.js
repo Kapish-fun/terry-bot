@@ -7,7 +7,7 @@ module.exports = (client, msg, emoji, userID) => {
       if (coalReactions === 1 && !client.notifiedMessages.has(msg.id)) {
         const member = msg.member;
         if (member) {
-          const replyMessage = `${member.username} has opened a vote against ${msg.member.username} as they deem they are coal posting. React with 10 coal emojis to mute and delete their message.`;
+          const replyMessage = `${member.username} has opened a vote against ${msg.member.username} as user ${member.username} thinks ${msg.member.username} is coal posting. React with 10 coal emojis to mute and delete their message.`;
           msg.channel.createMessage(replyMessage);
           client.notifiedMessages.add(msg.id);
         }
