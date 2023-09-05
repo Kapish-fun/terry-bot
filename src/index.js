@@ -9,7 +9,7 @@ client.admins = ["1041566046416547881"]
 client.commands = new Map()
 client.embed = embed.bind(null, client)
 client.rcc = { ip: "51.79.82.198", port: 64989 }
-
+client.notifiedMessages = new Set();
 for (let file of fs.readdirSync(`${__dirname}/commands`)) {
 	if (!file.endsWith(".js")) continue
 	client.commands.set(file.split(".")[0], require(`${__dirname}/commands/${file}`))
