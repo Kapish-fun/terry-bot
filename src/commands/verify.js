@@ -1,5 +1,3 @@
-const path = require("path")
-
 const endpoint = "https://kapish.fun/discord/match?discordId="
 
 exports.info = {

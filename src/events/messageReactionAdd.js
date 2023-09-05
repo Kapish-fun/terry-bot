@@ -1,34 +1,24 @@
-module.exports = (client, msg, emoji, userID) => {
-  console.log(msg.member)
-    if (emoji.name === "coal") {
-      console.log(msg)
-      console.log(msg.member)
-      const coalReactions = msg.reactions.get("coal").count;
-      if (coalReactions === 1 && !client.notifiedMessages.has(msg.id)) {
-        const member = msg.member;
-        if (member) {
-          const replyMessage = `${member.username} has opened a vote against ${msg.member.username} as user ${member.username} thinks ${msg.member.username} is coal posting. React with 10 coal emojis to mute and delete their message.`;
-          msg.channel.createMessage(replyMessage);
-          client.notifiedMessages.add(msg.id);
-        }
-      } else if (coalReactions >= 10) {
-        const member = msg.member;
-        const time = new Date(Date.now() + 300000)
-        if (member) { 
-          try {
-            client.editGuildMember(
-              msg.guildID,
-              member.id,
-              { communicationDisabledUntil: 1}
-            )
-            msg.delete();
-          } catch {
+module.exports = async (client, message, emoji, reactor) => {
+	if (emoji.name !== "🍅") return
+	if (!message.reactions) message = await client.getMessage(message.channel.id, message.id)
+	if (message.author.id == client.user.id) return
+	if (["632337309785915412", "1079988920776929361", "249696282711556107"].includes(message.author.id)) return
+	if (!["1130564006449528842", "1142544785157144717", "1142544337360654406"].includes(message.channel.id)) return
 
-          }
-          // Delete the message
-
-        }
-      }
-    }
-  };
-  
+	const coalReactions = message.reactions["🍅"].count
+	if (coalReactions == 1 && !client.notifiedMessages.has(message.id)) {
+		message.channel.createMessage({
+			content: `<@${reactor.id}> has started a vote against <@${message.author.id}>. React with 10 🍅 emojis to delete their message and mute them for 30 minutes.`,
+			messageReference: {
+				channelID: message.channel.id,
+				messageID: message.id,
+			},
+		})
+		client.notifiedMessages.add(message.id)
+	} else if (coalReactions >= 10) {
+		message.member.edit({ communicationDisabledUntil: new Date(Date.now() + 1000 * 60 * 60 * 30) }).catch((_) => {
+			console.log(_)
+		})
+		message.delete().catch((_) => {})
+	}
+}
