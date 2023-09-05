@@ -1,7 +1,7 @@
 module.exports = (client, msg, emoji, userID) => {
     if (emoji.name === "coal") {
-      console.log(client)
       console.log(msg)
+      console.log(msg.member)
       const coalReactions = msg.reactions.get("coal").count;
       if (coalReactions === 1 && !client.notifiedMessages.has(msg.id)) {
         const member = msg.member;
