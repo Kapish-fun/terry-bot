@@ -1,4 +1,5 @@
 module.exports = (client, msg, emoji, userID) => {
+  console.log(msg.member)
     if (emoji.name === "coal") {
       console.log(msg)
       console.log(msg.member)
