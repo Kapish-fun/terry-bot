@@ -11,14 +11,19 @@ module.exports = (client, msg, emoji, userID) => {
       } else if (coalReactions >= 10) {
         const member = msg.member;
         const time = new Date(Date.now() + 300000)
-        if (member) {
-          await client.editGuildMember(
-            msg.guildID,
-            member.id,
-            { communicationDisabledUntil: 1}
-          )
+        if (member) { 
+          try {
+            client.editGuildMember(
+              msg.guildID,
+              member.id,
+              { communicationDisabledUntil: 1}
+            )
+            msg.delete();
+          } catch {
+
+          }
           // Delete the message
-          msg.delete();
+
         }
       }
     }
