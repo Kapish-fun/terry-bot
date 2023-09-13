@@ -22,6 +22,7 @@ exports.info = {
 				{ name: "Bodyshot", value: "bodyshot" },
 				{ name: "Asset", value: "asset" },
 				{ name: "Clothing", value: "clothing" },
+				{ name: "Mesh", value: "mesh" },
 			],
 		},
 		{ name: "id", description: "The asset ID.", type: 4, required: true },
@@ -39,7 +40,7 @@ exports.run = async (client, interaction) => {
 	if (response?.message) return interaction.createMessage("The arbiter is currently down.")
 
 	const file = await response.text()
-	if (!file) return interaction.createMessage("The arbiter did not return any data. The site might be down.")
+	if (!file) return interaction.createMessage("The arbiter did not return any data.")
 
 	return interaction.createMessage({ embeds: [] }, { file: Buffer.from(file, "base64"), name: "render.png" })
 }

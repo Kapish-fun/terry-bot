@@ -19,5 +19,5 @@ exports.run = async (client, interaction) => {
 	}
 
 	await member.addRole(process.env.VERIFIED_ROLE, "User has a Kapish account")
-	return interaction.createMessage(`Welcome, [${username}](https://kapish.fun/users/${userId}/profile)!`)
+	return interaction.createMessage(`Welcome, [${username}](https://kapish.fun/users/${userId}/profile)!`).catch((e) => console.log(e)) // weird edge case, no clue what causes this
 }
