@@ -5,6 +5,7 @@ const endpoints = {
 	bodyshot: "render/user/%d/bodyshot",
 	asset: "render/asset/%d",
 	clothing: "render/clothing/%d",
+	mesh: "render/mesh/%d",
 }
 
 exports.info = {
